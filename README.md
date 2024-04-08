@@ -92,4 +92,5 @@
         - D : 생성했던 평가 항목들 제거
 
 ## ERD
-![Performance_20240408_163106](https://github.com/DevHyun2/Performance_Evaluation_PP/assets/125541289/c579b179-c328-4631-8829-4138e5c373cb)
+![Performance_20240408_172229](https://github.com/DevHyun2/Performance_Evaluation_PP/assets/125541289/c7a11d12-4a18-41be-85ed-11783350234e)
+
