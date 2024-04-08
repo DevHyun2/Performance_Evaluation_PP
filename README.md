@@ -90,3 +90,5 @@
         - U : 생성한 자기 평가 항목에 점수 입력
         생성한 자기 평가 항목 내용 수정
         - D : 생성했던 평가 항목들 제거
+
+![Performance_20240408_163106](https://github.com/DevHyun2/Performance_Evaluation_PP/assets/125541289/c579b179-c328-4631-8829-4138e5c373cb)
