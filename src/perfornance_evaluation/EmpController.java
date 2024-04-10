@@ -1,12 +1,12 @@
 package perfornance_evaluation;
 
 import java.util.Scanner;
-
 public class EmpController {
 
 	static Scanner sc = new Scanner(System.in);
 	static EmpService empService = new EmpService();
-
+	static CheckController checkController = new CheckController();
+	
 	public static void main(String[] args) {
 
 		boolean isStop = false;
@@ -74,6 +74,7 @@ public class EmpController {
 		int job = sc.nextInt();
 		return job;
 	}
+	
 	//adminlogin
 	public static boolean adminLogin(Scanner sc, EmpService empService, int adminid, int emppw) {
 		int count = 0;
@@ -111,13 +112,21 @@ public class EmpController {
 				handleSubMenu3();
 				}
 			
-			case 2 -> {}
+			case 2 -> {
+				checkController.checkLists();
+				}
 			
-			case 3 -> {}
+			case 3 -> {
+				checkController.insertCheck();
+			}
 			
-			case 4 -> {}
+			case 4 -> {
+				checkController.deleteCheck();
+			}
 			
-			case 5 -> {isSubMenuStop = true;}
+			case 5 -> {}
+			
+			case 6 -> {isSubMenuStop = true;}
 			
 			default -> {
 				System.out.println("없는 번호 입니다. 다시 선택해 주세요.");
@@ -126,10 +135,11 @@ public class EmpController {
 			}
 		}
 	}
+
 	//관리자 서비스
 	private static int subMenuDisplay() {
 		System.out.println("----------서비스를 선택해주세요----------\n");
-		System.out.println("(1)사원 조회\n(2)인사평가 항목 생성\n(3)평가항목 제거\n(4)평가 하기\n(5)로그아웃\n");
+		System.out.println("(1)사원 조회\n(2)평가 항목 조회\n(3)인사평가 항목 생성\n(4)평가항목 제거\n(5)평가 하기\n(6)로그아웃\n");
 		System.out.println("------------------------------------");
 		System.out.print("작업선택 > ");
 		int job = sc.nextInt();
