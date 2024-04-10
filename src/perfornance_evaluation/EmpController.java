@@ -6,6 +6,7 @@ public class EmpController {
 	static Scanner sc = new Scanner(System.in);
 	static EmpService empService = new EmpService();
 	static CheckController checkController = new CheckController();
+	static SelfController selfController = new SelfController();
 	
 	public static void main(String[] args) {
 
@@ -124,7 +125,9 @@ public class EmpController {
 				checkController.deleteCheck();
 			}
 			
-			case 5 -> {}
+			case 5 -> {
+				checkController.scoreUpdate();
+			}
 			
 			case 6 -> {isSubMenuStop = true;}
 			
@@ -223,15 +226,27 @@ public class EmpController {
 			// 새로운 메뉴 표시
 			int subMenuSelect = subMenuDisplay2();
 			switch (subMenuSelect) {
-			case 1 -> {}
+			case 1 -> {
+				selfController.scoreSearch();
+			}
 			
-			case 2 -> {}
+			case 2 -> {
+				selfController.selfSearch();
+			}
 			
-			case 3 -> {}
+			case 3 -> {
+				selfController.selfInsert();
+			}
 			
-			case 4 -> {}
+			case 4 -> {
+				selfController.selfDelete();
+			}
 			
-			case 5 -> {isSubMenuStop = true;}
+			case 5 -> {
+				selfController.selfUpdate();
+			}
+			
+			case 6 -> {isSubMenuStop = true;}
 			
 			default -> {
 				System.out.println("없는 번호 입니다. 다시 선택해 주세요.");
@@ -244,7 +259,7 @@ public class EmpController {
 	//사원 서비스
 	private static int subMenuDisplay2() {
 		System.out.println("------------서비스를 선택해주세요------------\n");
-		System.out.println("(1)평가 점수 조회\n(2)자기평가 항목 생성\n(3)자기평가 항목 제거\n(4)자기평가 하기\n(5)로그아웃\n");
+		System.out.println("(1)평가 점수 조회\n(2)자기평가 항목 조회\n(3)자기평가 항목 생성\n(4)자기평가 항목 제거\n(5)자기평가 하기\n(6)로그아웃\n");
 		System.out.println("----------------------------------------");
 		System.out.print("작업선택 > ");
 		int job = sc.nextInt();

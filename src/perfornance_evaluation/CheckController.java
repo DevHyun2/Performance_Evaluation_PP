@@ -88,4 +88,10 @@ public class CheckController {
 		int result = checkService.deleteCheck(checkid);
 		CheckView.print(result > 0? "삭제완료":"삭제실패");
 	}
+	
+	//평가 하기
+	public void scoreUpdate() {
+		// TODO Auto-generated method stub
+		
+	}
 }
