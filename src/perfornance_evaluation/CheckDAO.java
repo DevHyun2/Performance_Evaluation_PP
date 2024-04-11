@@ -122,8 +122,8 @@ public class CheckDAO {
 	public int insertCheck(CheckDTO check) {
 		int result = 0;
 		String sql = "INSERT INTO checkLists (check_id, department, rank, check_name, description)VALUES"
-				+ "((SELECT NVL(MAX(check_id), 0) + 1 FROM checkLists), "
-				+ "?, ?, ?, ?)";
+					+ "((SELECT NVL(MAX(check_id), 0) + 1 FROM checkLists), "
+					+ "?, ?, ?, ?)";
 		conn = DBUtil.dbConnection(); 
 		try {
 			pst = conn.prepareStatement(sql);
@@ -150,6 +150,106 @@ public class CheckDAO {
 		try {
 			pst = conn.prepareStatement(sql);
 			pst.setInt(1, checkid);
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbDisconnect(conn, pst, rs);
+		}
+		return result;
+	}
+	
+	//평가 하기(Insert)
+	public int scoreInsert(PerformancesDTO perfDTO) {
+		int result = 0;
+		String sql = "INSERT INTO performances (review_id, employee_id, check_id, score, review_year)VALUES"
+					+ "((SELECT NVL(MAX(review_id), 0) + 1 FROM performances), "
+					+ "?, ?, ?, ?)";
+		conn = DBUtil.dbConnection(); 
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, perfDTO.getEmployee_id());
+			pst.setInt(2, perfDTO.getCheck_id());
+			pst.setInt(3, perfDTO.getScore());
+			pst.setInt(4, perfDTO.getReview_year());
+			
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbDisconnect(conn, pst, rs);
+		}
+		return result;
+	}
+	
+	//평가 수정
+	public int scoreUpdate(int reviewid, int score) {
+		int result = 0;
+		String sql = "update performances "
+				+ "set score = ? "
+				+ "where review_id = ?";
+		conn = DBUtil.dbConnection(); 
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(2, reviewid);
+			pst.setInt(1, score);
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.dbDisconnect(conn, pst, rs);
+		}
+		return result;
+	}
+	
+	
+	//평가 점수 조회
+	public List<JoinCheckPerfDTO> scoreCheck(int empid) {
+		List<JoinCheckPerfDTO> checklist = new ArrayList<JoinCheckPerfDTO>();
+	    String sql = "SELECT p.review_id, c.rank, c.department, p.employee_id, c.description, p.review_year, p.score " +
+	                 "FROM performances p " +
+	                 "INNER JOIN checkLists c ON p.check_id = c.check_id " +
+	                 "WHERE p.employee_id = ?";
+	    conn = DBUtil.dbConnection();
+	    try {
+	        pst = conn.prepareStatement(sql);
+	        pst.setInt(1, empid);
+	        rs = pst.executeQuery();
+	        while (rs.next()) {
+	            checklist.add(makeCheck4(rs));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBUtil.dbDisconnect(conn, pst, rs);
+	    }
+	    return checklist;
+	}
+
+	private JoinCheckPerfDTO makeCheck4(ResultSet rs) throws SQLException {
+		JoinCheckPerfDTO check = new JoinCheckPerfDTO();
+		
+		check.setReview_id(rs.getInt("review_id"));
+	    check.setRank(rs.getString("rank"));
+	    check.setDepartment(rs.getString("department"));
+	    check.setEmployee_id(rs.getInt("employee_id"));
+	    check.setDescription(rs.getString("description"));
+	    check.setReview_year(rs.getInt("review_year"));
+	    check.setScore(rs.getInt("score"));
+		
+	    
+		return check;
+	}
+	
+	//평가 항목 제거
+	int scoreDelete(int reviewid) {
+		int result = 0;
+		String sql = "delete from performances "
+					+ "where review_id = ? ";
+		conn = DBUtil.dbConnection(); 
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, reviewid);
 			result = pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

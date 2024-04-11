@@ -26,13 +26,23 @@ public class CheckController {
 			case 2 -> {
 				System.out.print("조회할 부서명 >> ");
 				String dept = sc.next();
-				CheckView.print(checkService.deptCheck(dept), dept + "조회");
+				List<CheckDTO> resultList = checkService.deptCheck(dept);
+				if(resultList.isEmpty()) {
+					System.out.println("조회할 부서가 존재하지 않습니다.");
+				} else {
+					CheckView.print(checkService.deptCheck(dept), dept + "조회");
+				}
 			}
 			
 			case 3 -> {
 				System.out.print("조회할 직급 >> ");
 				String rank = sc.next();
-				CheckView.print(checkService.rankCheck(rank), rank + "조회");
+				List<CheckDTO> resultList = checkService.rankCheck(rank);
+				if (resultList.isEmpty()) {
+				    System.out.println("조회할 직급이 존재하지 않습니다.");
+				} else {
+				    CheckView.print(resultList, rank + " 조회");
+				}
 			}
 			
 			case 4 -> {isStop = true;}
@@ -83,15 +93,70 @@ public class CheckController {
 	
 	//평가 항목 제거
 	static void deleteCheck() {
-		System.out.print("삭제할 평가 번호 >> ");
+		System.out.print("삭제할 평가 문항 >> ");
 		int checkid = sc.nextInt();
 		int result = checkService.deleteCheck(checkid);
 		CheckView.print(result > 0? "삭제완료":"삭제실패");
 	}
 	
 	//평가 하기
+	public static void scoreInsert() {
+		PerformancesDTO perf = insertScore();
+		int result = checkService.scoreInsert(perf);
+		CheckView.print(result > 0? "평가완료":"평가실패");
+	}
+	
+	private static PerformancesDTO insertScore() {
+		System.out.print("평가 할 사원번호 >> ");
+		int empid = sc.nextInt();
+		System.out.print("평가 할 항목번호 >> ");
+		int checkNum = sc.nextInt();
+		System.out.print("평가 점수 >> ");
+		int score = sc.nextInt();
+		System.out.print("평가 년도 >> ");
+		int year = sc.nextInt();
+		PerformancesDTO perfDTO = new PerformancesDTO();
+		perfDTO.setEmployee_id(empid);
+		perfDTO.setCheck_id(checkNum);
+		perfDTO.setScore(score);
+		perfDTO.setReview_year(year);
+		
+		return perfDTO;
+	}
+
+	//평가 수정
 	public void scoreUpdate() {
-		// TODO Auto-generated method stub
+		System.out.print("수정 할 평가점수 번호 >> ");
+		int reviewid = sc.nextInt();
+		System.out.print("수정 할 점수 >> ");
+		int score = sc.nextInt();
+		int result = checkService.scoreUpdate(reviewid, score);
+		CheckView.print(result > 0?"수정완료":"수정실패");
 		
 	}
+
+	//평가 점수 조회
+	public void scoreCheck() {
+		System.out.print("조회 할 사원번호 >> ");
+		int empid = sc.nextInt();
+		List<JoinCheckPerfDTO> resultList = checkService.scoreCheck(empid);
+		if (resultList.isEmpty()) {
+		    System.out.println("조회할 사원 번호가 존재하지 않습니다.");
+		} else {
+		    CheckView.print2(resultList, empid + "번 사원 평가점수 조회");
+		}
+	}
+	//평가 점수 삭제
+	public void scoreDelete() {
+		System.out.print("삭제 할 평가점수 번호 >> ");
+		int reviewid = sc.nextInt();
+		int deletedRows = checkService.scoreDelete(reviewid);
+		if (deletedRows > 0) {
+		    System.out.println(reviewid + "번 평가 삭제 완료");
+		} else {
+		    System.out.println("삭제할 평가 번호가 존재하지 않습니다.");
+		}
+	}
+	
+	
 }

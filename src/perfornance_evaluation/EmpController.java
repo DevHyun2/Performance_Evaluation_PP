@@ -1,5 +1,6 @@
 package perfornance_evaluation;
 
+import java.util.List;
 import java.util.Scanner;
 public class EmpController {
 
@@ -7,7 +8,8 @@ public class EmpController {
 	static EmpService empService = new EmpService();
 	static CheckController checkController = new CheckController();
 	static SelfController selfController = new SelfController();
-	
+	static int employee_id = 0;
+	//메인 시작 메뉴
 	public static void main(String[] args) {
 
 		boolean isStop = false;
@@ -45,6 +47,8 @@ public class EmpController {
 				boolean loginSuccess = empLogin(sc, empService, empid, emppw);
 				if (loginSuccess) {
 				    // 로그인 성공한 경우의 처리
+					employee_id = empid;
+					handleSubMenu2(sc);
 				} else {
 				    // 로그인 실패한 경우의 처리
 					System.out.println("프로그램을 종료합니다.");
@@ -65,7 +69,7 @@ public class EmpController {
 		}
 	}
 
-
+	//시작 메뉴
 	private static int menuDisplay() {
 		System.out.println("----------[신한DS 인사평가]----------");
 		System.out.println("---------서비스를 선택해주세요---------\n");
@@ -126,7 +130,7 @@ public class EmpController {
 			}
 			
 			case 5 -> {
-				checkController.scoreUpdate();
+				Check();
 			}
 			
 			case 6 -> {isSubMenuStop = true;}
@@ -138,11 +142,55 @@ public class EmpController {
 			}
 		}
 	}
+	//관리자 점수 메뉴
+	private static void Check() {
+		boolean isSubMenuStop = false;
+		while (!isSubMenuStop) {
+			int subMenuSelect = subCheckDisplay();
+			switch(subMenuSelect) {
+			case 1 -> {
+				checkController.scoreCheck();
+			}
+			
+			case 2 -> {
+				checkController.scoreInsert();
+			}
+			
+			case 3 -> {
+				checkController.scoreUpdate();
+			}
+			
+			case 4 -> {
+				checkController.scoreDelete();
+			}
+			
+			case 5 -> {
+				isSubMenuStop = true;
+			}
+			
+			default -> {
+				System.out.println("없는 번호 입니다. 다시 선택해 주세요.");
+			}
+			
+			}
+		}
+		
+	}
+
+	//관리자 점수 메뉴
+	private static int subCheckDisplay() {
+		System.out.println("----------서비스를 선택해주세요----------\n");
+		System.out.println("(1)평가 점수 조회\n(2)평가 하기\n(3)평가 수정\n(4)평가 삭제\n(5)뒤로가기\n");
+		System.out.println("------------------------------------");
+		System.out.print("작업선택 > ");
+		int job = sc.nextInt();
+		return job;
+	}
 
 	//관리자 서비스
 	private static int subMenuDisplay() {
 		System.out.println("----------서비스를 선택해주세요----------\n");
-		System.out.println("(1)사원 조회\n(2)평가 항목 조회\n(3)인사평가 항목 생성\n(4)평가항목 제거\n(5)평가 하기\n(6)로그아웃\n");
+		System.out.println("(1)사원 조회\n(2)평가 항목 조회\n(3)인사평가 항목 생성\n(4)평가항목 제거\n(5)평가\n(6)로그아웃\n");
 		System.out.println("------------------------------------");
 		System.out.print("작업선택 > ");
 		int job = sc.nextInt();
@@ -159,19 +207,33 @@ public class EmpController {
 			case 1 -> {
 				System.out.print("조회할 직원번호 >> ");
 				int empid = sc.nextInt();
-				EmpView.print(empService.empidCheck(empid), empid + "번 사원 조회");
+				EmpDTO employee = empService.empidCheck(empid);
+				if (employee != null) {
+				    EmpView.print(employee, empid + "번 사원 조회");
+				} else {
+				    System.out.println(empid + "번 사원이 존재하지 않습니다");
+				}
 			}
 			
 			case 2 -> {
 				System.out.print("조회할 부서명 >> ");
 				String dept = sc.next();
-				EmpView.print(empService.deptCheck(dept), dept + "조회");
-			}
+				List<EmpDTO> resultList = empService.deptCheck(dept);
+				if (!resultList.isEmpty()) {
+				    EmpView.print(resultList, dept + "조회");
+				} else {
+				    System.out.println(dept + " 부서가 존재하지 않습니다");
+				}			}
 			
 			case 3 -> {
 				System.out.print("조회할 직급 >> ");
 				String rank = sc.next();
-				EmpView.print(empService.rankCheck(rank), rank + "조회");
+				List<EmpDTO> resultList = empService.rankCheck(rank);
+				if (!resultList.isEmpty()) {
+				    EmpView.print(resultList, rank + "조회");
+				} else {
+				    System.out.println(rank + " 직급에 해당하는 사원이 존재하지 않습니다");
+				}
 			}
 			
 			case 4 -> {isSubMenuStop = true;}
@@ -227,9 +289,9 @@ public class EmpController {
 			int subMenuSelect = subMenuDisplay2();
 			switch (subMenuSelect) {
 			case 1 -> {
-				selfController.scoreSearch();
+				selfController.scoreSearch(employee_id);
 			}
-			
+			/*
 			case 2 -> {
 				selfController.selfSearch();
 			}
@@ -245,8 +307,8 @@ public class EmpController {
 			case 5 -> {
 				selfController.selfUpdate();
 			}
-			
-			case 6 -> {isSubMenuStop = true;}
+			*/
+			case 2 -> {isSubMenuStop = true;}
 			
 			default -> {
 				System.out.println("없는 번호 입니다. 다시 선택해 주세요.");
@@ -259,7 +321,7 @@ public class EmpController {
 	//사원 서비스
 	private static int subMenuDisplay2() {
 		System.out.println("------------서비스를 선택해주세요------------\n");
-		System.out.println("(1)평가 점수 조회\n(2)자기평가 항목 조회\n(3)자기평가 항목 생성\n(4)자기평가 항목 제거\n(5)자기평가 하기\n(6)로그아웃\n");
+		System.out.println("(1)평가 점수 조회\n(2)로그아웃\n");
 		System.out.println("----------------------------------------");
 		System.out.print("작업선택 > ");
 		int job = sc.nextInt();
