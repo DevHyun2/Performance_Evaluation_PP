@@ -1,0 +1,45 @@
+h1{
+  font-size: 30px;
+  background-color: #f3f3f3;
+  box-shadow: 0px 1px 8px 0px gray;
+  padding: 10px;
+}
+.smalltitle{
+  color: #6AADFD;
+  font-size: 22px;
+}
+p{
+  font-size: 25px;
+  font-weight: bold;
+}
+#table1{
+  border-collapse: collapse;
+  border: none;
+  border-top: 4px solid;
+  border-bottom: 2px solid gray;
+}
+#table1 tr td:nth-child(1){
+  background-color: #eeeeee;
+}
+#table2{
+  border-collapse: collapse;
+  border: none;
+  border-top: 4px solid;
+  border-bottom: 2px solid gray;
+}
+#table2 tr td:nth-child(1){
+  background-color: #eeeeee;
+}
+#table3{
+  border-collapse: collapse;
+}
+#table1 caption{
+  font-weight: bold;
+  text-align: left;
+  margin: 5px;
+}
+#table2 caption{
+  font-weight: bold;
+  text-align: left;
+  margin: 5px;
+}
