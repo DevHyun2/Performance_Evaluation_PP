@@ -31,7 +31,12 @@ p{
   background-color: #eeeeee;
 }
 #table3{
-  border-collapse: collapse;
+  border-spacing: 10px;
+  border-collapse: separate;
+  left: 350px;
+  top: 150px;
+  position: fixed;
+  border: azure;
 }
 #table1 caption{
   font-weight: bold;
@@ -42,4 +47,7 @@ p{
   font-weight: bold;
   text-align: left;
   margin: 5px;
+}
+#tr1{
+  border-bottom: 1px;
 }
