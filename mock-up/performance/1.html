@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EmpInfo</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <link rel="stylesheet" href="1-1.css">
 <body>
@@ -14,54 +16,68 @@
   <table border="1" id="table1">
     <caption>기업정보</caption>
         <tr>
-          <td>회사명</td>
+          <th>회사명</th>
           <td>신한DS 금융SW아카데미</td>
         </tr>
         <tr>
-          <td>대표자</td>
+          <th>대표자</th>
           <td>정진</td>
         </tr>
         <tr>
-          <td>소재지</td>
+          <th>소재지</th>
           <td>서울시 마포구 월드컵북로4길 77</td>
         </tr>
   </table>
   <table border="1" id="table2">
     <caption>담당자 정보</caption>
         <tr>
-          <td>부서명</td>
+          <th>부서명</th>
           <td>3기 6회차</td>
         </tr>
         <tr>
-          <td>직급</td>
+          <th>직급</th>
           <td>교육생</td>
         </tr>
         <tr>
-          <td>성명</td>
+          <th>성명</th>
           <td>권대현</td>
         </tr>
         <tr>
-          <td>contect</td>
+          <th>contect</th>
           <td>@daenim_</td>
         </tr>
   </table>
   <table border="1" id="table3">
-        <tr id="tr1">
-          <td>성명</td>
-          <td>부서명</td>
-          <td>직급</td>
-          <td>입사일</td>
-        </tr>
-        <tr>
-          <td>홍길동</td>
+    <thead>
+      <tr id="tr1">
+        <th>사원번호</th>
+        <th>성명</th>
+        <th>생년월일</th>
+        <th>부서명</th>
+        <th>직급</th>
+        <th>입사일</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr id="tr2">
+          <td>101</td>
+          <td>홍</td>
+          <td>1998-03-12</td>
           <td>인사팀</td>
           <td>대리</td>
-          <td>2018-04-04</td>
+          <td>2024-05-02</td>
         </tr>
-        <tr>
-        </tr>
-        <tr>
-        </tr>
+    </tbody>
   </table>
+  <div class="page">
+    <ul class="pagination modal">
+      <li><a href="#" class="first">처음으로</a></li>
+      <li><a href="#" class="arrow left"><<</a></li>
+      <li><a href="#" class="active num">1</a></li>
+      <li><a href="#" class="num">2</a></li>
+      <li><a href="#" class="arrow right">>></a></li>
+      <li><a href="#" class="last">끝으로</a></li>
+    </ul>
+  </div>
 </body>
 </html>

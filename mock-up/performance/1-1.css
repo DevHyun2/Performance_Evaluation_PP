@@ -4,50 +4,162 @@ h1{
   box-shadow: 0px 1px 8px 0px gray;
   padding: 10px;
 }
+
 .smalltitle{
   color: #6AADFD;
   font-size: 22px;
 }
+
 p{
   font-size: 25px;
   font-weight: bold;
 }
+
 #table1{
   border-collapse: collapse;
   border: none;
   border-top: 4px solid;
   border-bottom: 2px solid gray;
+  font-size: 20px;
+  margin: 10px;
+  margin-left: 40px;
 }
-#table1 tr td:nth-child(1){
+
+#table1 tr th{
   background-color: #eeeeee;
 }
+
 #table2{
   border-collapse: collapse;
   border: none;
   border-top: 4px solid;
   border-bottom: 2px solid gray;
+  font-size: 20px;
+  margin: 50px;
+  margin-left: 40px;
 }
-#table2 tr td:nth-child(1){
+
+#table2 tr th{
   background-color: #eeeeee;
 }
-#table3{
-  border-spacing: 10px;
-  border-collapse: separate;
-  left: 350px;
-  top: 150px;
+/* #table3{
   position: fixed;
-  border: azure;
+  left: 400px;
+  top: 160px;
+  border: none;
+  font-size: 20px;
+  border-collapse: separate;
+  border-spacing: 10px;
 }
+
+#table3 tr{
+  border-bottom: 3px solid #00ff99;
+} */
+#table3 {
+  border-collapse: collapse;
+  position: fixed;
+  left: 500px;
+  top: 170px;
+  width: 40%;
+  table-layout: fixed;
+}
+
+#table3 th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+#table3 tr:nth-child(even){background-color: #f2f2f2}
+
+#table3 th{
+  background-color: #eeeeee;
+  text-align: center;
+}
+
+#table3 td{
+  text-align: center;
+}
+
 #table1 caption{
   font-weight: bold;
   text-align: left;
   margin: 5px;
 }
+
 #table2 caption{
   font-weight: bold;
   text-align: left;
   margin: 5px;
 }
-#tr1{
-  border-bottom: 1px;
+.page{
+  text-align: center;
+  width: 50%;
+}
+
+.pagination{
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.pagination li{
+  display: inline;
+  text-align: center;
+}
+
+/* 숫자 페이지네이션 */
+.pagination a{
+  float: left;
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 5px 12px;
+  color: #96a0ad;
+  line-height: 1.5;
+}
+
+.first{
+  margin-right: 15px;
+}
+
+.last{
+  margin-left: 15px;
+}
+
+.first:hover, .last:hover, .left:hover, .right:hover{
+  color: #2e9cdf;
+}
+
+.pagination a:active{
+  outline: none;
+}
+
+.modal .num{
+  margin-left: 3px;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+.modal .num:hover{
+  background-color: #2e9cdf;
+  color: #ffffff;
+}
+
+.modal .num.active, .modal .num:active{
+  background-color: #2e9cdf;
+  cursor: pointer;
+}
+
+.arrow-left{
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid blue;
 }
