@@ -71,8 +71,9 @@ form{
 .form_radio_btn {
   width: 47%;
   height : 45px;
-    border: 1px solid #EAE7E7;
-    border-radius: 10px;
+  border: 1px solid #EAE7E7;
+  border-radius: 10px;
+  
 }
 .form_radio_btn input[type=radio] {
   display: none;
@@ -88,12 +89,13 @@ form{
  
 /* Checked */
 .form_radio_btn input[type=radio]:checked + label {
-  background: #184DA0;
+  background: #38d39f;
   color: #fff;
 }
  
 /* Hover */
 .form_radio_btn label:hover {
+  background-color: #38d39f;
   color: #666;
 }
  
