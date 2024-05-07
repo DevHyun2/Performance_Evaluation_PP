@@ -23,6 +23,7 @@ p{
   font-size: 20px;
   margin: 10px;
   margin-left: 40px;
+  box-shadow: 0px 1px 8px 0px gray;
 }
 
 #table1 tr th{
@@ -37,6 +38,7 @@ p{
   font-size: 20px;
   margin: 50px;
   margin-left: 40px;
+  box-shadow: 0px 1px 8px 0px gray;
 }
 
 #table2 tr th{
@@ -60,8 +62,9 @@ p{
   position: fixed;
   left: 500px;
   top: 170px;
-  width: 40%;
+  width: 60%;
   table-layout: fixed;
+  box-shadow: 0px 1px 8px 0px gray;
 }
 
 #table3 th, td {
@@ -94,6 +97,9 @@ p{
 .page{
   text-align: center;
   width: 50%;
+  margin: auto;
+  margin-right: 240px;
+  margin-top: 100px;
 }
 
 .pagination{
@@ -152,7 +158,8 @@ p{
 }
 
 .modal .num.active, .modal .num:active{
-  background-color: #2e9cdf;
+  border: 1px solid #2e9cdf;
+  /* background-color: #2e9cdf; */
   cursor: pointer;
 }
 
