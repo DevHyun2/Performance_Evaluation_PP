@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import performance_evaluation.EmpDTO;
 import performance_evaluation.EmpService;
@@ -36,11 +37,21 @@ public class LoginServlet extends HttpServlet {
 		int empId = Integer.parseInt(request.getParameter("userId"));
 		int emppw = Integer.parseInt(request.getParameter("userPw"));
 		
-		int emp = service.selectAdminLog(empId, emppw);
+		String radio = request.getParameter("logoption");
 		
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("emplist.jsp");
-		rd.forward(request, response);
+		if("admin".equals(radio)) {
+			int admin = service.selectAdminLog(empId, emppw);
+			if(admin == 1) {
+//				request.getRequestDispatcher("../admin/emplist.do").forward(request, response);
+				response.sendRedirect("../admin/emplist.do");
+			}
+		}else {
+			int emp = service.selectEmpLog(empId, emppw);
+			if(emp == 1) {
+				response.sendRedirect("../empinfo/myinfo.do");
+			}
+		}
+
 	}
 
 }

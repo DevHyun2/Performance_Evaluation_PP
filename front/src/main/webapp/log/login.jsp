@@ -15,7 +15,7 @@
     <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
   </div>
   <div class="login-content">
-    <form>
+    <form action="login.do" method="post">
       <img src="신한마크-removebg-preview.png" >
       <h2 class="title">인사평가</h2>
       <div class="mb-3">
@@ -36,7 +36,7 @@
             </div>
             <div class="div">
               <h5>UserId</h5>
-              <input type="text" class="input" id="userId" name="userId">
+              <input type="text" class="input" id="userId" name="userId" autocomplete="off" required="required">
             </div>
         </div>
         <div class="input-div pass">
@@ -45,7 +45,7 @@
             </div>
             <div class="div">
               <h5>UserPw</h5>
-              <input type="password" class="input" id="userPw" name="userPw">
+              <input type="password" class="input" id="userPw" name="userPw" required="required">
             </div>
         </div>
       <input type="submit" class="btn" value="Login">
@@ -54,7 +54,27 @@
 </div>
 
 </body>
-  <script>
+<script>
+$(function(){
+    // 폼 제출 이벤트 처리
+    $("form").on("submit", function(e) {
+        e.preventDefault(); // 기본 폼 제출 방지
+        
+        // 선택된 라디오 옵션 가져오기
+        var userType = $("input[name='logoption']:checked").val();
+        
+        // 사용자 입력 값 가져오기
+        var userId = $("#userId").val();
+        var userPw = $("#userPw").val();
+  
+    });
+    
+    // localStorage에서 저장된 userId와 userPw 복원
+    $("#userId").val(localStorage.getItem("userId"));
+    $("#userPw").val(localStorage.getItem("userPw"));
+});
+</script>
+<script>
   const inputs = document.querySelectorAll(".input");
 
   function addcl(){

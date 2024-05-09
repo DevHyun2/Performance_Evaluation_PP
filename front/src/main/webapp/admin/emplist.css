@@ -16,10 +16,17 @@ h1{
   box-shadow: 0px 1px 8px 0px gray;
   padding-bottom: 10px;
 }
-img{
+#shinhan{
   position: relative;
   top: 10px;
   left: 10px;
+}
+
+.inner_body{
+  position: relative;
+  text-align: right;
+  bottom: 60px;
+  right: 30px;
 }
 
 .smalltitle{
@@ -42,7 +49,7 @@ p{
   margin-bottom: 10px;
   margin-left: 40px;
   box-shadow: 0px 1px 8px 0px gray;
-  position: fixed;
+  position: relative;
 }
 
 #table1 tr th{
@@ -65,8 +72,8 @@ p{
   margin: 50px;
   margin-left: 40px;
   box-shadow: 0px 1px 8px 0px gray;
-  position: fixed;
-  top: 400px;
+  position: relative;
+  /* top: 400px; */
 }
 
 #table2 tr th{
@@ -145,6 +152,7 @@ td{
   margin: auto;
   position: relative;
   left: 170px;
+  bottom: 500px;
 }
 
 .pagination{
@@ -219,13 +227,16 @@ td{
 
 #select_menu{
   position: relative;
-  left: 880px;
+  left: 370px;
   bottom: 10px;
 }
 
 #table3Area {
   width: 60%;
   height: 547px;
-  margin-left: 500px;
   position: relative;
+  left: 500px;
+  bottom: 542px;
+  
 }
+
