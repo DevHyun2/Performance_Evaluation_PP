@@ -10,27 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import performance_evaluation.EmpDTO;
-import performance_evaluation.EmpService;
+import performance_evaluation.CheckDTO;
+import performance_evaluation.CheckService;
 
 /**
- * Servlet implementation class EmpListServlet
+ * Servlet implementation class CheckListServlet
  */
-@WebServlet("/admin/emplist.do")
-public class EmpListServlet extends HttpServlet {
+@WebServlet("/check/checklist.do")
+public class CheckListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EmpService service = new EmpService();
-		List<EmpDTO> emplist = service.selectAll();
-		request.setAttribute("emplist", emplist);
+		CheckService service = new CheckService();
+		List<CheckDTO> checklist = service.selectAll();
+		request.setAttribute("checklist", checklist);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("emplist.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("checklist.jsp");
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getParameter();
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

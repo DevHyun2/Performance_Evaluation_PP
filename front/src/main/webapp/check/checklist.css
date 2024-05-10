@@ -16,146 +16,93 @@ h1{
   box-shadow: 0px 1px 8px 0px gray;
   padding-bottom: 10px;
 }
+.smalltitle{
+  color: #6AADFD;
+  font-size: 22px;
+}
 #shinhan{
   position: relative;
   top: 10px;
   left: 10px;
 }
-
-.inner_body{
-  position: relative;
-  text-align: right;
-  bottom: 60px;
-  right: 30px;
-}
-
-.smalltitle{
-  color: #6AADFD;
-  font-size: 22px;
-}
-
 p{
   font-size: 25px;
   font-weight: bold;
   color: #555;
 }
-
-#table1{
-  border-collapse: collapse;
-  border: none;
-  border-color: transparent;
-  font-size: 20px;
-  color: #555;
-  margin-bottom: 10px;
-  margin-left: 40px;
-  box-shadow: 0px 1px 8px 0px gray;
-  position: relative;
+#insertButton{
+	position: relative;
+	left: 10px;
 }
-
-#table1 tr th{
-  background-color: #e6f7f2;
+#checkButton{
+	position: relative;
+	left: 1100px;
 }
-
-.table1_tr1{
-  border-top: 4px solid #6b6b6b;
-}
-.table1_tr3{
-  border-bottom: 2px solid gray;
-}
-
-#table2{
-  border-collapse: collapse;
-  border: none;
-  border-color: transparent;
-  font-size: 20px;
-  color: #555;
-  margin: 50px;
-  margin-left: 40px;
-  box-shadow: 0px 1px 8px 0px gray;
-  position: relative;
-  /* top: 400px; */
-}
-
-#table2 tr th{
-  background-color: #e6f7f2;
-}
-
-.table2_tr1{
-  border-top: 4px solid #6b6b6b;
-}
-.table2_tr4{
-  border-bottom: 2px solid gray;
-}
-
-/* #table3{
-  position: fixed;
-  left: 400px;
-  top: 160px;
-  border: none;
-  font-size: 20px;
-  border-collapse: separate;
-  border-spacing: 10px;
-}
-
-#table3 tr{
-  border-bottom: 3px solid #00ff99;
-} */
 #table3 {
   border-collapse: separate;
   border-spacing: 10px;
   /* position: relative; */
   /* left: 500px; */
-  width: 100%;
-  table-layout: fixed;
+  /* width: 100%; */
+  /* table-layout: fixed; */
   border-style: none;
   border-color: transparent;
 }
-
+#table3 caption{
+  font-weight: bold;
+  text-align: left;
+  margin: 10px;
+}
 #table3 th, #table3 td {
   text-align: left;
-  padding: 8px;
+  padding: 6px;
 }
-
-td{
-  text-align: left;
-  padding: 8px;
-}
-
-#table3 tr:nth-child(even){background-color: #f2f2f2}
-
 #table3 th{
   /* background-color: #e6f7f2; */
   text-align: center;
   color: #555;
   border-bottom: 3px solid #38d39f;
 }
-
-#table3 td{
-  text-align: center;
+#table3 tr:nth-child(even){
+	background-color: #d9d7d7;
+}
+#table3 th:nth-last-child(1){
+	border-bottom-color: transparent;
+}
+#table3 #tr2 td:nth-last-child(1){
+	background-color: transparent;
 }
 
-#table3 tr:hover {
-	background-color: rgb(91, 199, 154,0.5) !important; 
+#table3 td:nth-child(1){
+	text-align: center;
 }
-
-#table1 caption{
-  font-weight: bold;
-  text-align: left;
-  margin: 10px;
+#table3 td:nth-child(2){
+	width: 80px;
 }
-
-#table2 caption{
-  font-weight: bold;
-  text-align: left;
-  margin: 10px;
+#table3 td:nth-child(4){
+	width: 210px;
 }
+#table3 td:nth-child(5){
+	width: 850px;
+}
+#deleteButton{
+	font-size: 10px;
+}
+#table3Area {
+  width: 1330;
+  height: 547px;
+  position: relative;
+  left: 10px;
+  /* bottom: 542px; */
+}
+/* 숫자 페이지네이션 */
 .page{
   text-align: center;
   width: 50%;
   margin: auto;
   position: relative;
-  left: 170px;
-  bottom: 500px;
+  right: 210px;
+  top: 60px;
 }
 
 .pagination{
@@ -170,7 +117,7 @@ td{
   text-align: center;
 }
 
-/* 숫자 페이지네이션 */
+
 .pagination a{
   float: left;
   display: block;
@@ -227,19 +174,4 @@ td{
   border-bottom: 10px solid transparent;
   border-right: 10px solid blue;
 }
-
-#select_menu{
-  position: relative;
-  left: 370px;
-  bottom: 10px;
-}
-
-#table3Area {
-  width: 60%;
-  height: 547px;
-  position: relative;
-  left: 500px;
-  bottom: 542px;
-  
-}
-
+/* 숫자 페이지네이션 */

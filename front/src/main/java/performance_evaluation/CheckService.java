@@ -52,4 +52,8 @@ public class CheckService {
 	int scoreDelete(int reviewid) {
 		return checkDAO.scoreDelete(reviewid);
 	}
+	//평가하기 위한 목록
+	public List<CheckDTO> checkEmp(int empid) {
+		return checkDAO.checkEmp(empid);
+	}
 }

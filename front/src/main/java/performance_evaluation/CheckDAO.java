@@ -258,4 +258,36 @@ public class CheckDAO {
 		}
 		return result;
 	}
+	
+	public List<CheckDTO> checkEmp(int empid) {
+		List<CheckDTO> checkemp = new ArrayList<CheckDTO>();
+		String sql = "select*from checklists "
+				+ "where department = ( "
+				+ "select department "
+				+ "from employees "
+				+ "where employee_id = ?) "
+				+ "union "
+				+ "select*from checklists "
+				+ "where rank = ( "
+				+ "select rank "
+				+ "from employees "
+				+ "where employee_id = ?)";
+		conn = DBUtil.dbConnection();
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, empid);
+			pst.setInt(2, empid);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+	        	CheckDTO check = makeCheck(rs);
+	        	checkemp.add(check);
+	        }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbDisconnect(conn, pst, rs);
+		}
+		return checkemp;
+	}
 }
