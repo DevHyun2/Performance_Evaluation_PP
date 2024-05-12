@@ -30,7 +30,7 @@ public class EmpListServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getParameter();
+//		request.getParameter();
 	}
 
 }

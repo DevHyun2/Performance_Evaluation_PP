@@ -19,6 +19,7 @@
       사원관리 프로그램<span class="smalltitle">(인사관리)</span>
     </h1>
   </div>
+  <div id="container">
   <div id="p">
 	  <p id="pemp">사원번호: ${emplist.employee_id}</p> 
 	  <p id="pname">성명: ${emplist.name}</p> 
@@ -60,9 +61,9 @@
     		</c:forEach>
     </tbody>
   </table>
-  <input type="text">
+  <input type="text" id="year" placeholder="평가 년도를 입력해주세요" required="required">
   <button type="submit" id="complete" value="complete">완료</button>  
   </form>
-</body>
+  </div>
 </body>
 </html>

@@ -75,5 +75,16 @@ h1{
 }
 #complete{
 	position: relative;
-	left: 1380px;
+	left: 595px;
+}
+#year{
+	position: relative;
+	left: 595px;
+}
+#container{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }

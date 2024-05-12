@@ -13,6 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/shinhan3/eclipse-workspace/lib/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/shinhanStudy/eclipse-workspace/lib/lombok.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

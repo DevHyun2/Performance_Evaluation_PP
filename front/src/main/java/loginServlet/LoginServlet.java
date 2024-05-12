@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionActivationListener;
 
 import performance_evaluation.EmpDTO;
 import performance_evaluation.EmpService;
@@ -31,27 +32,26 @@ public class LoginServlet extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServletContext app = getServletContext();
+		HttpSession session = request.getSession();
 		EmpService service = new EmpService();
 		
-		int empId = Integer.parseInt(request.getParameter("userId"));
+		int userId = Integer.parseInt(request.getParameter("userId"));
 		int emppw = Integer.parseInt(request.getParameter("userPw"));
-		
 		String radio = request.getParameter("logoption");
-		
-		if("admin".equals(radio)) {
-			int admin = service.selectAdminLog(empId, emppw);
-			if(admin == 1) {
-//				request.getRequestDispatcher("../admin/emplist.do").forward(request, response);
-				response.sendRedirect("../admin/emplist.do");
-			}
-		}else {
-			int emp = service.selectEmpLog(empId, emppw);
-			if(emp == 1) {
-				response.sendRedirect("../empinfo/myinfo.do");
-			}
+
+		if ("admin".equals(radio)) {
+		    int admin = service.selectAdminLog(userId, emppw);
+		    if (admin == 1) {
+		        session.setAttribute("userid", userId); // 여기서 세션에 userid를 저장해야 합니다.
+		        response.sendRedirect("../admin/emplist.do");
+		    }
+		} else {
+		    int emp = service.selectEmpLog(userId, emppw);
+		    if (emp == 1) {
+		        session.setAttribute("userid", userId); // 여기서 세션에 userid를 저장해야 합니다.
+		        response.sendRedirect("../empinfo/myinfo.do");
+		    }
 		}
 
 	}
-
 }

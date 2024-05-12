@@ -10,8 +10,8 @@ public class DBUtil {
 
 	public static Connection dbConnection() {
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String userid = "SCOTT";
-		String passwod = "TIGER";
+		String userid = "project";
+		String passwod = "project";
 		Connection conn = null;
 
 		try {

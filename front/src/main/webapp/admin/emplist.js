@@ -1,3 +1,22 @@
+var sidebar = document.querySelector('.js-side_bar');
+var overlay = document.querySelector('.overlay');
+
+// 사이드바를 열어주는 함수
+sidebar.open = function() {
+   sidebar.style.right = "0";
+   overlay.style.display = "block"; // 오버레이를 화면에 표시
+};
+
+  // 사이드바를 닫아주는 함수
+sidebar.close = function() {
+  sidebar.style.right = "-250px";
+  overlay.style.display = "none"; // 오버레이를 숨김
+};
+
+// HTML 요소에 이벤트 바인딩
+document.querySelector('button[onclick="sidebar.open()"]').addEventListener('click', sidebar.open);
+document.querySelector('button[onclick="sidebar.close()"]').addEventListener('click', sidebar.close);
+
 window.addEventListener('DOMContentLoaded', function () {
   /*const rowsPerPage = 10; // 한 페이지에 보여질 행의 수
   const table = document.getElementById('table3'); // 테이블 요소 가져오기

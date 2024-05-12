@@ -8,6 +8,13 @@ html {
 body {
   min-height: 100%;
 }
+#container{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
 h1{
   font-size: 30px;
   color: #555;
@@ -101,7 +108,7 @@ p{
   width: 50%;
   margin: auto;
   position: relative;
-  right: 210px;
+  /* right: 210px; */
   top: 60px;
 }
 

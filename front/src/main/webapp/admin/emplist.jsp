@@ -8,13 +8,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>인사평가</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet"> -->
 </head>
 <link rel="stylesheet" href="emplist.css">
 <body>
+  <!-- <script src="https://kit.fontawesome.com/a81368914c.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <c:set value="${fn:length(emplist)}" var="empSize"></c:set>
+
   <div class="div_head">
     <h1>
       <img id="shinhan"src="../log/신한마크-removebg-preview.png" alt="신한마크 이미지" width="50" height="50">
@@ -23,21 +25,22 @@
   </div>
   <p>기본정보</p>
   <div class="inner_body">
-    <button onclick="sidebar.open()"><img id="menu_img" alt="메뉴" src="Vector.png" width="10" height="7">
+		<button onclick="sidebar.open()"><img id="menu_img" alt="메뉴" src="Vector.png" width="10" height="7">
     </button>
    <aside class="side_bar js-side_bar">
+    <div id="sidebarText">
     <ul id="check_menu" style="list-style: none">
-	    <li><a>평가 항목 메뉴</a>
+	    <li><p class="sidebarFont">평가 항목 메뉴</p>
         <ul style="list-style: none;">
-           <li><a href="../check/checklist.do" >조회</a></li>         
-           <!-- <li><a href="#none" >생성</a></li>
-           <li><a href="#none" >수정</a></li>
-           <li><a href="#none" >제거</a></li> -->
+           <li><a href="../check/checklist.do" class="sidebarAtag">조회</a></li>         
         </ul>
 	   </li>
-   </ul>
-        <button onclick="sidebar.close()">SideBar Close</button>
+   	</ul>
+        <button onclick="sidebar.close()">Close</button>
+    </div>
     </aside>
+    <!-- 오버레이 요소 추가 -->
+  <div class="overlay" onclick="sidebar.close()"></div>
 </div>
   <table border="1" id="table1">
     <caption>기업정보</caption>
@@ -121,7 +124,8 @@
       <li><a href="#" class="arrow right">▶</a></li>
       <li><a href="#" class="last">끝으로</a></li>
     </ul>
-  </div>
+  </div> 
+
 </body>
 <script>
 window.addEventListener('DOMContentLoaded', function () {

@@ -33,7 +33,24 @@ h1{
   color: #6AADFD;
   font-size: 22px;
 }
+.side_bar {
+    width: 180px; /* 사이드바의 폭 */
+    position: fixed; /* 고정 위치 */
+    top: 0;
+    right: -250px; /* 초기에는 화면 바깥으로 숨겨둠 */
+    transition: 0.5s; /* 부드러운 전환 효과 */
+    height: 100%; /* 전체 높이 */
+    overflow-x: hidden; /* 내용이 넘칠 경우 숨김 */
+    z-index: 2; /* 다른 요소들 위에 표시 */
+    background-color: white;
+  }
 
+#sidebarText{
+	position: relative;
+	top: 100px;
+	right: 15px;
+	
+}
 p{
   font-size: 25px;
   font-weight: bold;
@@ -134,9 +151,6 @@ td{
   text-align: center;
 }
 
-#table3 tr:hover {
-	background-color: rgb(91, 199, 154,0.5) !important; 
-}
 
 #table1 caption{
   font-weight: bold;
@@ -226,7 +240,7 @@ td{
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-right: 10px solid blue;
-}
+} 
 
 #select_menu{
   position: relative;
@@ -242,4 +256,27 @@ td{
   bottom: 542px;
   
 }
-
+.overlay {
+  display: none; /* 기본적으로는 숨김 */
+  position: fixed; /* 고정 위치 */
+  width: 100%; /* 전체 폭 */
+  height: 100%; /* 전체 높이 */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5) !important;/* 반투명 검은색 */
+  cursor: pointer; /* 클릭 가능함을 나타내는 커서 */
+  z-index: 1; /* 사이드바보다 낮은 순위 */
+} 
+.sidebarFont{
+	font-size: 20px;
+}
+.sidebarAtag{
+	position: relative;
+	right: 100px;
+	text-decoration: none;
+}
+#tr2:hover {
+  background-color: rgb(91, 199, 154,0.5) !important; 
+}

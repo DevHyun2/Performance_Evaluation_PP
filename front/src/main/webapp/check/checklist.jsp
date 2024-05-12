@@ -21,6 +21,7 @@
       사원관리 프로그램<span class="smalltitle">(인사관리)</span>
     </h1>
   </div>
+<div id="container">
   <p>인사평가</p>
   <div id="table3Area">
   <div id="select_menu">
@@ -52,7 +53,7 @@
     <tbody>
     		<c:forEach items="${checklist }" var="check">
         <tr id="tr2">
-          <td>	${check.check_id }</td>
+          <td>${check.check_id }</td>
           <td>${check.department }</td>
           <td>${check.rank }</td>
           <td>${check.check_name }</td>
@@ -71,6 +72,7 @@
       <li><a href="#" class="last">끝으로</a></li>
     </ul>
   </div>
+ </div>
 </body>
 <script>
 window.addEventListener('DOMContentLoaded', function () {
